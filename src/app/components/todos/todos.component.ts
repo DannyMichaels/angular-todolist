@@ -8,6 +8,7 @@ import { Todo } from '../../models/Todo';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
+  inputTodo: string = '';
 
   constructor() {}
 
@@ -37,5 +38,16 @@ export class TodosComponent implements OnInit {
 
   deleteTodo(todoIndex: number): void {
     this.todos = this.todos.filter((_todo, idx) => idx !== todoIndex);
+  }
+
+  addTodo(): void {
+    const newTodo = {
+      content: this.inputTodo,
+      completed: false,
+    };
+
+    this.todos.push(newTodo);
+
+    this.inputTodo = '';
   }
 }
